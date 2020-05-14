@@ -1,15 +1,15 @@
 const initialState = {
-    counter: 0
+    counter: 0,
+    results: []
 }
 
 const reducer = ( state = initialState, action) => {
 
     switch (action.type) {
         case 'INCREMENT':
-            return {
-                ...state,
-                counter: state.counter + 1
-            }
+            const newState = Object.assign({}, state);
+            newState.counter = state.counter + 1;
+            return newState;
         case 'DECREMENT':
             return {
                 ...state,
@@ -25,10 +25,13 @@ const reducer = ( state = initialState, action) => {
                 ...state,
                 counter: state.counter - action.value
             };
+        case 'STORE_RESULT':
+            return {
+                ...state,
+                results: state.results.concat({id: new Date(), value: state.counter})
+            }
     }
-        
     return state;
-
 }
 
 
