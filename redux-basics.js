@@ -7,6 +7,7 @@ const initialState = {
 
 //reducer
 const rootReducer = (state = initialState, action) => {
+    console.log('root' + state);
     if (action.type === 'INC_COUNTER') {
          return {
              ...state,
